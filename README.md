@@ -4,7 +4,7 @@
 
 [Zabbix Default Processor](signals/Zabbix%20Default%20Signal%20Processor.txt)
 
-[Zabbix Default Processor](signals/Zabbix%20Default%20Signal%20Processor.txt)
+[Zabbix Webhook Processor](signals/Zabbix%20Webhook%20Signal%20Processor.txt)
 
 
 ## Примеры сценариев автопостроения РСМ
