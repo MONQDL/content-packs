@@ -1,4 +1,4 @@
-# Monq Content-packs
+# Monq Content Packs
 
 ## Примеры сценариев дедупликации и корреляции событий
 
