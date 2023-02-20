@@ -1,15 +1,34 @@
 # Monq Content Packs
 
-## Примеры сценариев дедупликации и корреляции событий
+## Signals
+
+Примеры сценариев дедупликации и корреляции событий в Monq
+
+### Zabbix
+
+Сценарии обработки событий из системы мониторинга Zabbix
+
+#### Для потока данных по шаблону Zabbix default
 
 [Zabbix Default Processor](./Signals/Zabbix%20Default%20Signal%20Processor.txt)
 
+#### Для потока данных по шаблону Default Template
+
+> В Zabbix должна быть настроена отправка событий в виде [WebHook](https://docs.monqlab.com/current/ru/solutions/integrations/#%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80-%D0%B8%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D0%B8-zabbix-%D1%87%D0%B5%D1%80%D0%B5%D0%B7-%D0%BE%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%BA%D1%83-webhook)
+
 [Zabbix Webhook Processor](./Signals/Zabbix%20Webhook%20Signal%20Processor.txt)
 
+### SCOM
 
-## Примеры сценариев автопостроения РСМ
+Сценарий обработки событий из системы мониторинга SCOM (System Center Operations Manager)
 
-|                                                                                                                                                                                                                                                                                                                            |
-|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Zabbix](./CMDB%20Autobuild/Zabbix/Zabbix%20Create%20Topology%20from%20Zabbix.txt)                                                                                                                                                                                                                                         |
-| [vCenter Topology Sync](./CMDB%20Autobuild//vCenter/vCenter%20Topology.txt)<br>[vCenter Create VM](./CMDB%20Autobuild//vCenter/vCenter%20VM%20Created.txt)<br>[vCenter Migrate VM](./CMDB%20Autobuild//vCenter/vCenter%20VM%20Migrated.txt)<br>[vCenter Remove VM](./CMDB%20Autobuild//vCenter/vCenter%20VM%20Removed.txt) |
+[SCOM Signal Processor](./Signals/SCOM%20Signals%20processor.txt)
+
+## CMDB Autobuild
+
+Примеры сценариев автопостроения РСМ
+
+| Наименование                                    | Раздел                                 |
+|-------------------------------------------------|----------------------------------------|
+| Сценарии автопостроения групп и узлов из Zabbix | [Zabbix](./CMDB%20Autobuild/Zabbix/)   |
+| Сценарии автопостроения топологии  vCenter      | [vCenter](./CMDB%20Autobuild/vCenter/) |
