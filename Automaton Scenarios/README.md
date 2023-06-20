@@ -1,13 +1,5 @@
 # Monq Automaton Scenarios
 
-- [Metrics Thresholds](Metrics%20Thresholds/)
-- [CMDB Autobuild](CMDB%20Autobuild/)
-- [Signals](Signals/)
-  - [Zabbix](Zabbix/)
-    - [Для потока данных по шаблону Zabbix default](Для%20потока%20данных%20по%20шаблону%20Zabbix%20default/)
-    - [Для потока данных по шаблону Default Template](Для%20потока%20данных%20по%20шаблону%20Default%20Template/)
-  - [SCOM](SCOM/)
-
 Примеры сценариев автоматизации Monq (в формате `base64`)
 
 ## CMDB Autobuild 
