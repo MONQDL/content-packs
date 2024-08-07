@@ -1,9 +1,13 @@
 # Зависимости плагина обнаружения и сбора метрик Monq Agent
 
-## Установка Kubernetes state metrics
+Для корректной и полноценной работы контент-пака **"K8s Топология&Метрики"** требуется установить дополнительные компоненты обнаружения метрик кластера: [kube-state-metrics](#установка-kube-state-metrics), [metrics-server](#установка-metrics-server), [node-exporter](#установка-node-exporter).
+
+## Установка kube-state-metrics
 
 В каталоге `kube-state-metrics` данного репозитория подготовлены
-манифесты для создания необходимых сущностей в Kubernetes:
+манифесты для создания необходимых компонентов `kube-state-metrics` версии `2.9.2`:
+
+После применения манифеста будут созданы следующие сущности в Kubernetes:
 
 * ClusterRole
 * ClusterRoleBinding
@@ -11,7 +15,7 @@
 * Deployment
 * Service
 
-Для применения манифестов, выполните следующую команду:
+Для установки `kube-state-metrics` версии `2.9.2`, выполните следующую команду:
 
 ```bash
 
@@ -19,64 +23,73 @@ kubectl create -f ./kube-state-metrics/*.yaml
 
 ```
 
-> Запуск **kube-state-metrics** производится в namespace **kube-system**
+Установка компонентов **kube-state-metrics** будет произведена в namespace **kube-system**.
 
-Ссылка на проект в GitHub - https://github.com/kubernetes/kube-state-metrics
+Ссылка на проект в GitHub - <https://github.com/kubernetes/kube-state-metrics>
+
+### Установка kube-state-metrics при помощи Helm Chart
+
+Ссылка на Chart - <https://artifacthub.io/packages/helm/prometheus-community/kube-state-metrics>.
 
 ## Установка metrics-server
 
-Metrics Server можно установить через непосредственное применение манифеста или используя
-[Helm chart](https://artifacthub.io/packages/helm/metrics-server/metrics-server). 
+В каталоге `metric-server` данного репозитория подготовлен
+манифест для создания необходимых компонентов `metrics-server` версии `0.6.2`.
 
-Для установки Metrics Server версии v.0.6.2, выполните следующую команду:
+После применения манифеста будут созданы следующие сущности в Kubernetes:
+
+* ClusterRole
+* ClusterRoleBinding
+* ServiceAccount
+* Deployment
+* Service
+
+Для установки **"Metrics Server"** версии `0.6.2`, выполните следующую команду:
 
 ```bash
-kubectl apply -f ./metric-server/components.yaml
+kubectl apply -f ./metric-server/*.yaml
 ```
 
-> В файле `./metric-server/components.yaml` данного репозитория подготовлены
-> манифесты для создания необходимых сущностей в Kubernetes:
-> 
-> * ClusterRole
-> * ClusterRoleBinding
-> * ServiceAccount
-> * Deployment
-> * Service
+Установка компонентов **"Metrics Server"** будет произведена в namespace **kube-system**.
 
-Инструкции по установке других версий Metrics Server доступны по 
-ссылке - https://github.com/kubernetes-sigs/metrics-server/releases
+Ссылка на проект в GitHub - <https://github.com/kubernetes-sigs/metrics-server>
 
-#### Совместимость версий Metrics Server и Kubernetes
+Инструкции по установке других версий **"Metrics Server"** доступны по 
+ссылке - <https://github.com/kubernetes-sigs/metrics-server/releases>
 
- Metrics Server | Metrics API group/version | Поддерживаемая версия Kubernetes 
-----------------|---------------------------|------------------------------
- 0.6.x          | `metrics.k8s.io/v1beta1`  | 1.19+                        
- 0.5.x          | `metrics.k8s.io/v1beta1`  | *1.8+                        
- 0.4.x          | `metrics.k8s.io/v1beta1`  | *1.8+                        
- 0.3.x          | `metrics.k8s.io/v1beta1`  | 1.8-1.21                     
+### Совместимость версий Metrics Server и Kubernetes
+
+ | Metrics Server | Metrics API group/version | Поддерживаемая версия Kubernetes |
+ |----------------|---------------------------|----------------------------------|
+ | 0.6.x          | `metrics.k8s.io/v1beta1`  | 1.19+                            |
+ | 0.5.x          | `metrics.k8s.io/v1beta1`  | *1.8+                            |
+ | 0.4.x          | `metrics.k8s.io/v1beta1`  | *1.8+                            |
+ | 0.3.x          | `metrics.k8s.io/v1beta1`  | 1.8-1.21                         |
 
 > Версии Kubernetes ниже v1.16 требуют передачи аргумента `--authorization-always-allow-paths=/livez,/readyz` 
-в команду запуска Metrics Server 
+в команду запуска Metrics Server
 
-> Запуск **Metrics Server** производится в namespace **kube-system**
+### Установка metrics-server при помощи Helm Chart
 
-Ссылка на проект в GitHub - https://github.com/kubernetes-sigs/metrics-server
+Ссылка на Chart - <https://artifacthub.io/packages/helm/metrics-server/metrics-server>
 
 ## Установка Node Exporter
 
-В каталоге `node-exporter` данного репозитория подготовлен
-манифест для создания необходимых Daemonset в Kubernetes.
+В каталоге `node-exporter` данного репозитория подготовлены
+манифесты для создания необходимых `Daemonset` и `Service` в Kubernetes.
 
 Для применения манифеста, выполните следующую команду:
 
 ```bash
 
-kubectl create -f ./node-exporter/daemonset.yaml
-kubectl create -f ./node-exporter/service.yaml
+kubectl create -f ./node-exporter/*.yaml
 
 ```
 
-> Запуск **node-exporter** производится в namespace **monitoring**
+Установка **node-exporter** будет произведена в namespace **monitoring**, его нужно создать заранее, если он не существует.
 
+Ссылка на проект в GitHub - <https://github.com/prometheus/node_exporter>
 
-Ссылка на проект в GitHub - https://github.com/prometheus/node_exporter
+### Установка node-exporter при помощи Helm Chart
+
+Ссылка на Chart - <https://artifacthub.io/packages/helm/prometheus-community/prometheus-node-exporter>
